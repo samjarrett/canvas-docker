@@ -33,7 +33,8 @@ RUN mkdir /tmp/sfnt2woff && \
     true
 
 # Install the specific bundler we need
-RUN gem uninstall --all --ignore-dependencies --force bundler && \
+RUN if [ -e /var/lib/gems/$RUBY_MAJOR.0/gems/bundler-* ]; then BUNDLER_INSTALL="-i /var/lib/gems/$RUBY_MAJOR.0"; fi && \
+    gem uninstall --all --ignore-dependencies --force $BUNDLER_INSTALL bundler && \
     gem install bundler --no-document -v 1.11.2 && \
     find $GEM_HOME ! -user docker -exec chown docker:docker {} \; && \
     true
