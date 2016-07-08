@@ -1,4 +1,4 @@
-FROM squareweave/canvas:base
+FROM squareweave/canvas-base
 
 ENV DEPLOYED_CANVAS_VERSION=stable
 
