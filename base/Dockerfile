@@ -1,4 +1,4 @@
-FROM instructure/ruby-passenger:2.1
+FROM instructure/ruby-passenger:2.2
 
 USER root
 RUN set -xe && \
