@@ -13,3 +13,11 @@ RUN touch Gemfile.lock && \
     npm install && \
     npm cache clean && \
     true
+
+USER docker
+
+# Build frontend, strip permissions
+RUN mkdir -p log tmp/pids public/assets public/stylesheets/compiled && \
+    bundle exec rake canvas:compile_assets && \
+    true
+
